@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdotjtlpvw4vs"]
+
+[ext_resource type="Script" uid="uid://cjiuny2jn2grg" path="res://Scripts/player.gd" id="1_3eeal"]
+[ext_resource type="ArrayMesh" uid="uid://dtghmu4cqoyyh" path="res://Godot 3D Platformer - Assets/Models/Characters/character-male-c.obj" id="1_6l3be"]
+[ext_resource type="Script" uid="uid://bg4palry3c531" path="res://Scripts/player_model.gd" id="3_jvxg0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3eeal"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3eeal")
+
+[node name="PlayerModel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_6l3be")
+script = ExtResource("3_jvxg0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.99999416, 0, -0.0034383256, -0.00067001884, 0.98082954, 0.19486664, 0.0033724112, 0.19486777, -0.9808238, 0, 0.6774991, -2.0713363)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6191529, 0, 0, 0, 1, 0, 0.3232219, 0)
+shape = SubResource("CapsuleShape3D_3eeal")

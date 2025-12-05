@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://b832gun3pkhii"]
+
+[ext_resource type="Texture2D" uid="uid://xic6vf8mu4pl" path="res://Textures/rocky_trail_02_diff_4k.png" id="1_gqi4c"]
+[ext_resource type="Texture2D" uid="uid://cnxsbg48qtloc" path="res://Textures/rocky_trail_02_nor_gl_4k.png" id="2_ruose"]
+[ext_resource type="Texture2D" uid="uid://wxgloeog3qab" path="res://Textures/rocky_trail_02_rough_4k.png" id="3_8bq5r"]
+[ext_resource type="PackedScene" uid="uid://f2xpubj4cdof" path="res://Scene/Tunnel.tscn" id="4_fpa3h"]
+[ext_resource type="PackedScene" uid="uid://bdotjtlpvw4vs" path="res://Scene/Player.tscn" id="5_ofx4i"]
+[ext_resource type="ArrayMesh" uid="uid://c4dfvhmc31yut" path="res://Godot 3D Platformer - Assets/Models/Platformer/block-grass-overhang-low-long.obj" id="6_ruose"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qcj2"]
+albedo_texture = ExtResource("1_gqi4c")
+roughness_texture = ExtResource("3_8bq5r")
+normal_enabled = true
+normal_texture = ExtResource("2_ruose")
+uv1_scale = Vector3(60, 60, 60)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5op34"]
+size = Vector2(300, 300)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lfbnc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8bq5r"]
+points = PackedVector3Array(-0.75368977, 0.375, -0.5410625, -0.6890819, 0.182361, -0.5410625, -0.80871844, 0.18010963, -0.51839465, -0.95688844, 0.375, -0.4569584, -0.72637916, 0.5, -0.5000697, 0.75348616, 0.375, -0.5410625, -0.50259566, 0.10028387, -0.5410625, -0.72637916, 0, -0.5000697, -0.95688844, 0.10028387, -0.4569584, -0.91999876, 0.5, -0.4198848, -1.018439, 0.18010963, -0.30866408, -1.041062, 0.375, -0.25368923, 0.72617555, 0.5, -0.5000697, 0.9566848, 0.375, -0.4569584, 0.80851483, 0.18010963, -0.51839465, 0.6888783, 0.182361, -0.5410625, 0.50239205, 0.10028387, -0.5410625, -0.91999876, 0, -0.4198848, 0.72617555, 0, -0.5000697, -1.0000962, 0, -0.22625479, -1.0000962, 0.5, -0.22625479, -1.041062, 0.182361, -0.18843973, -1.041062, 0.375, 0.2535833, 0.91979516, 0.5, -0.4198848, 0.9566848, 0.10028387, -0.4569584, 1.0408584, 0.375, -0.25368923, 1.0182356, 0.18010963, -0.30866408, 0.91979516, 0, -0.4198848, -1.0000962, 0, 0.22614884, -1.041062, 0.10028387, 0, -1.0000962, 0.5, 0.22614884, -1.041062, 0.182361, 0.18833381, -1.018439, 0.18010963, 0.30855817, -0.95688844, 0.375, 0.4568525, -0.91999876, 0.5, 0.41977888, 0.9998926, 0.5, -0.22625479, 0.9998926, 0, -0.22625479, 1.0408584, 0.375, 0.2535833, 1.0408584, 0.182361, -0.18843973, -0.91999876, 0, 0.41977888, -0.95688844, 0.10028387, 0.4568525, -0.80871844, 0.18010963, 0.51828873, -0.75368977, 0.375, 0.5410625, -0.72637916, 0.5, 0.49996376, 0.9998926, 0.5, 0.22614884, 1.0408584, 0.10028387, 0, 0.9998926, 0, 0.22614884, 1.0182356, 0.18010963, 0.30855817, 1.0408584, 0.182361, 0.18833381, 0.91979516, 0.5, 0.41977888, 0.9566848, 0.375, 0.4568525, -0.72637916, 0, 0.49996376, -0.6890819, 0.182361, 0.5410625, 0.75348616, 0.375, 0.5410625, 0.72617555, 0.5, 0.49996376, 0.9566848, 0.10028387, 0.4568525, 0.91979516, 0, 0.41977888, 0.80851483, 0.18010963, 0.51828873, -0.50259566, 0.10028387, 0.5410625, 0.72617555, 0, 0.49996376, 0.6888783, 0.182361, 0.5410625, 0.50239205, 0.10028387, 0.5410625)
+
+[sub_resource type="Sky" id="Sky_ruose"]
+
+[sub_resource type="Environment" id="Environment_gqi4c"]
+background_mode = 2
+sky = SubResource("Sky_ruose")
+ssr_enabled = true
+volumetric_fog_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("5_ofx4i")]
+transform = Transform3D(0.9999358, 0, 0.011326909, 0, 1, 0, -0.011326909, 0, 0.9999358, -9.395458, 12.435415, -7.881139)
+
+[node name="Platform" type="Node" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Platform"]
+
+[node name="GroundTexture" type="MeshInstance3D" parent="Platform/Ground"]
+transform = Transform3D(0.94363093, 0, 0, 0, 0.94363093, 0, 0, 0, 0.94363093, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0qcj2")
+mesh = SubResource("PlaneMesh_5op34")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Ground"]
+shape = SubResource("WorldBoundaryShape3D_lfbnc")
+
+[node name="Tunnel" parent="Platform" instance=ExtResource("4_fpa3h")]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, -9.031756, 11.499251, 10.707134)
+
+[node name="BlockGrassOverhangLowLong" type="MeshInstance3D" parent="Platform"]
+transform = Transform3D(1.7497027, 0, 0, 0, 1, 0, 0, 0, 3.8181372, -9.240951, 10.47606, -7.3425407)
+mesh = ExtResource("6_ruose")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform/BlockGrassOverhangLowLong"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/BlockGrassOverhangLowLong/StaticBody3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8bq5r")
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_gqi4c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.9993639, -0.019616244, 0.029782569, -0.011983541, 0.9712836, 0.23762272, -0.033588585, 0.23711468, -0.97090083, -9.325026, 13.1856575, -1.2375522)

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://f2xpubj4cdof"]
+
+[ext_resource type="Texture2D" uid="uid://bjphry5swc5ko" path="res://Tunnel Textures/plaster_brick_01_diff_4k.png" id="1_pcv40"]
+[ext_resource type="Texture2D" uid="uid://6yw1eoqqgkmo" path="res://Tunnel Textures/plaster_brick_01_rough_4k.png" id="2_1lgov"]
+[ext_resource type="Texture2D" uid="uid://cdlecsb3ntmry" path="res://Tunnel Textures/plaster_brick_01_nor_gl_4k.png" id="2_am5ya"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tlsh"]
+albedo_texture = ExtResource("1_pcv40")
+roughness_texture = ExtResource("2_1lgov")
+normal_enabled = true
+normal_texture = ExtResource("2_am5ya")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am5ya"]
+albedo_texture = ExtResource("1_pcv40")
+roughness_texture = ExtResource("2_1lgov")
+normal_enabled = true
+normal_texture = ExtResource("2_am5ya")
+
+[node name="Tunnel" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.021186717, -0.37245074, 0.9278101, 0, 0.92801845, 0.37253433, -0.9997755, 0.00789278, -0.019661661, 3.7084634, 0.59058046, 0.01839149)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.080688, -0.033855915)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+shadow_enabled = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 4.6080937, 0, 0, 0, 1, -0.039389133, 2.7996843, 0)
+material_override = SubResource("StandardMaterial3D_7tlsh")
+use_collision = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1.2683313, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.3711385e-08, -4.6080937, 0, 0.9999999, -2.0142618e-07, 0, 0, 0, 1, -0.039389133, 0.017173499, -1.2162741e-07)
+material_override = SubResource("StandardMaterial3D_7tlsh")
+use_collision = true
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGBox3D3"]
+transform = Transform3D(-4.3711392e-08, 1.0000001, 0, -0.21700947, -9.4857855e-09, 0, 0, 3.5527137e-15, 1, 0.6618662, -0.008547821, 1.5130918e-07)
+operation = 2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1.2683313, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(2.9477499, 0, 1.2891965, 1.3278025, -8.742277e-08, -2.8620434, 5.8040094e-08, 2, -1.251039e-07, -3.7082806, 0, 0)
+material_override = SubResource("StandardMaterial3D_am5ya")
+use_collision = true
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.28201953, 0.1270346, 5.552859e-09, 0, -2.1855694e-08, 0.5, 0.13083878, -0.29046482, -1.2696621e-08, 0.4471144, 0, 0.19724065)
+operation = 2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.7294153, 0.32937714, 2.2554971e-08, 0, -3.6105607e-08, 1.294, 0.33840144, -0.7531213, -5.1571973e-08, 0.034807205, 0, -0.034238607)
+operation = 2
